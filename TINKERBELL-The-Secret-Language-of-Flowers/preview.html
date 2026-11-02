@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bouquet Preview — Tinkerbell</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌸</text></svg>">
+</head>
+<body>
+
+  <!-- Floating Fairy Petals Container -->
+  <div id="petal-canvas-container" aria-hidden="true"></div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-link">
+        <svg class="brand-icon" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="16" fill="#6C8B74" opacity="0.2"/>
+          <path d="M20 6 C24 14 34 16 34 20 C34 24 24 26 20 34 C16 26 6 24 6 20 C6 16 16 14 20 6 Z" fill="#6C8B74"/>
+          <circle cx="20" cy="20" r="4" fill="#C59E3F"/>
+        </svg>
+        <div>
+          <span class="brand-title">Tinkerbell</span>
+          <span class="brand-tagline">The Secret Language of Flowers</span>
+        </div>
+      </a>
+
+      <button class="mobile-toggle" aria-label="Toggle Navigation" aria-expanded="false">
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+      </button>
+
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="flowers.html" class="nav-link">Flower Library</a></li>
+        <li><a href="create.html" class="nav-link">Create Bouquet</a></li>
+        <li><a href="unlock.html" class="nav-link">Unlock Gift</a></li>
+        <li><a href="decode.html" class="nav-link">Decode Flowers</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="sparkle-toggle-btn" title="Toggle Floating Petals" aria-label="Toggle Floating Petals">
+          ✨
+        </button>
+        <a href="create.html" class="btn btn-primary btn-sm">Craft Another</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header style="padding: 3rem 0 1.5rem; text-align: center;">
+    <div class="container">
+      <div class="eyebrow">Your Floral Masterpiece</div>
+      <h1 style="font-size: 2.8rem; margin-bottom: 0.5rem;">Bouquet Presentation</h1>
+      <p style="color: var(--color-botanical-muted); max-width: 580px; margin: 0 auto; font-size: 1rem;">
+        Your secret gift has been saved. Copy the unique code below and share it with your recipient to reveal the flowers and hidden note!
+      </p>
+    </div>
+  </header>
+
+  <!-- Main Presentation Container -->
+  <main class="container" id="preview-container">
+    <div class="gift-card-presentation">
+      <!-- Gift Header Banner -->
+      <div class="gift-card-banner">
+        <div class="eyebrow" style="color: var(--color-gold);">Secret Gift Encrypted</div>
+        <h2 style="color: #FFFFFF; font-size: 2.2rem; margin-bottom: 0.25rem;">
+          For <span id="preview-recipient">Recipient</span>
+        </h2>
+        <div style="color: #D3DDD5; font-size: 0.95rem; margin-bottom: 1rem;">
+          Occasion: <strong id="preview-occasion" style="color: #FFF;">Occasion</strong>
+        </div>
+
+        <div>
+          <div class="gift-code-badge">
+            <span id="preview-gift-code">TINK-XXXXXX</span>
+            <button type="button" class="copy-btn" id="copy-code-btn" title="Copy gift code to clipboard">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gift Details Grid -->
+      <div class="gift-details-grid">
+        <!-- Visual Arrangement Preview Box -->
+        <div>
+          <h4 style="font-size: 1.1rem; margin-bottom: 0.75rem;">Bouquet Visual</h4>
+          <div class="gift-visual-preview" id="preview-visual-box">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+        <!-- Secret Letter & Floriography Meanings -->
+        <div>
+          <h4 style="font-size: 1.1rem; margin-bottom: 0.75rem;">Personal Secret Note</h4>
+          <div class="personal-message-scroll" id="preview-message">
+            <!-- Secret message -->
+          </div>
+
+          <h4 style="font-size: 1.1rem; margin-bottom: 0.75rem;">Secret Language of Included Flowers</h4>
+          <div class="secret-meaning-accordion" id="preview-flowers-list">
+            <!-- Flowers with meanings -->
+          </div>
+
+          <!-- Action Buttons -->
+          <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.5rem;">
+            <a href="unlock.html" id="test-unlock-link" class="btn btn-primary btn-sm" style="flex: 1;">
+              Test Unlock Page 🔑
+            </a>
+            <a href="decode.html" id="preview-decode-link" class="btn btn-secondary btn-sm" style="flex: 1;">
+              Full Decoder 📜
+            </a>
+            <a href="create.html" class="btn btn-secondary btn-sm">
+              Create Another 🌸
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <h3>Tinkerbell</h3>
+        <p>The secret language of flowers. A fairy-inspired digital botanical gifting experience crafted for sentimental hearts.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="flowers.html">Flower Library</a></li>
+          <li><a href="create.html">Bouquet Creator</a></li>
+          <li><a href="unlock.html">Unlock Gift</a></li>
+          <li><a href="decode.html">Floriography Decoder</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>How To Share</h4>
+        <p style="font-size: 0.85rem; color: #A3B5A7; line-height: 1.6;">
+          Simply copy the secret gift code and share it. The recipient enters it on the Unlock Gift page!
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Privacy Guarantee</h4>
+        <p style="font-size: 0.85rem; color: #A3B5A7; line-height: 1.6;">
+          Every bouquet remains safely stored in IndexedDB on this browser.
+        </p>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      &copy; 2026 TINKERBELL — THE SECRET LANGUAGE OF FLOWERS. ALL RIGHTS RESERVED.
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/storage.js"></script>
+  <script src="js/flowers-data.js"></script>
+  <script src="js/gifts.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
+

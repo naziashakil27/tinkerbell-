@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unlock Secret Gift — Tinkerbell</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌸</text></svg>">
+</head>
+<body>
+
+  <!-- Floating Fairy Petals Container -->
+  <div id="petal-canvas-container" aria-hidden="true"></div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-link">
+        <svg class="brand-icon" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="16" fill="#6C8B74" opacity="0.2"/>
+          <path d="M20 6 C24 14 34 16 34 20 C34 24 24 26 20 34 C16 26 6 24 6 20 C6 16 16 14 20 6 Z" fill="#6C8B74"/>
+          <circle cx="20" cy="20" r="4" fill="#C59E3F"/>
+        </svg>
+        <div>
+          <span class="brand-title">Tinkerbell</span>
+          <span class="brand-tagline">The Secret Language of Flowers</span>
+        </div>
+      </a>
+
+      <button class="mobile-toggle" aria-label="Toggle Navigation" aria-expanded="false">
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+      </button>
+
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="flowers.html" class="nav-link">Flower Library</a></li>
+        <li><a href="create.html" class="nav-link">Create Bouquet</a></li>
+        <li><a href="unlock.html" class="nav-link active">Unlock Gift</a></li>
+        <li><a href="decode.html" class="nav-link">Decode Flowers</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="sparkle-toggle-btn" title="Toggle Floating Petals" aria-label="Toggle Floating Petals">
+          ✨
+        </button>
+        <a href="create.html" class="btn btn-primary btn-sm">Craft Bouquet</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header style="padding: 3rem 0 1.5rem; text-align: center;">
+    <div class="container">
+      <div class="eyebrow">A Clandestine Delivery</div>
+      <h1 style="font-size: 2.8rem; margin-bottom: 0.5rem;">Unlock Your Secret Bouquet</h1>
+      <p style="color: var(--color-botanical-muted); max-width: 580px; margin: 0 auto; font-size: 1rem;">
+        Enter your unique gift code to unseal your personalized digital bouquet, read the hidden letter, and decode the meaning of each bloom.
+      </p>
+    </div>
+  </header>
+
+  <!-- Unlock Input Hero Card -->
+  <main class="container">
+    <section id="unlock-hero-section">
+      <div class="unlock-box-hero">
+        <div class="envelope-reveal-wrapper">
+          <div class="magic-envelope" id="magic-envelope">
+            💌
+          </div>
+        </div>
+
+        <h2 style="font-size: 1.8rem; margin-bottom: 0.5rem;">Enter Your Secret Gift Code</h2>
+        <p style="color: var(--color-botanical-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">
+          Example code format: <strong>TINK-A7B92C</strong>
+        </p>
+
+        <div style="max-width: 360px; margin: 0 auto;">
+          <input 
+            type="text" 
+            id="unlock-code-input" 
+            class="form-input unlock-code-field" 
+            placeholder="TINK-XXXXXX" 
+            maxlength="14" 
+            autocomplete="off" 
+            spellcheck="false" 
+            aria-label="Gift Code Input"
+          />
+
+          <div id="unlock-error-message" style="display: none; color: #C0392B; font-size: 0.88rem; margin-bottom: 1rem; font-weight: 500;">
+            <!-- Injected by unlock.js -->
+          </div>
+
+          <button type="button" id="unlock-submit-btn" class="btn btn-primary btn-lg" style="width: 100%;">
+            Unseal Secret Bouquet ✨
+          </button>
+        </div>
+
+        <div style="margin-top: 2rem; border-top: 1px solid var(--color-border); padding-top: 1.25rem;">
+          <p style="font-size: 0.85rem; color: var(--color-botanical-muted);">
+            Haven't received a code yet? <a href="create.html" style="color: var(--color-sage); font-weight: 600;">Create a bouquet for a friend</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Unlocked Gift Display Result (Revealed dynamically) -->
+    <section id="gift-result-section" style="display: none;">
+      <div class="gift-card-presentation">
+        <div class="gift-card-banner">
+          <div class="eyebrow" style="color: var(--color-gold);">Secret Bouquet Unlocked ✨</div>
+          <h2 style="color: #FFFFFF; font-size: 2.3rem; margin-bottom: 0.25rem;">
+            A Bouquet for <span id="unlocked-recipient">Friend</span>
+          </h2>
+          <div style="color: #D3DDD5; font-size: 0.95rem; margin-bottom: 0.75rem;">
+            Occasion: <strong id="unlocked-occasion" style="color: #FFF;">Celebration</strong>
+          </div>
+          <div class="gift-code-badge">
+            <span id="unlocked-gift-code">TINK-XXXXXX</span>
+          </div>
+        </div>
+
+        <div class="gift-details-grid">
+          <div>
+            <h4 style="font-size: 1.1rem; margin-bottom: 0.75rem;">Your Floral Arrangement</h4>
+            <div class="gift-visual-preview" id="unlocked-visual-box">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+
+          <div>
+            <h4 style="font-size: 1.1rem; margin-bottom: 0.75rem;">A Letter From Your Sender</h4>
+            <div class="personal-message-scroll" id="unlocked-message">
+              <!-- Secret message -->
+            </div>
+
+            <h4 style="font-size: 1.1rem; margin-bottom: 0.75rem;">The Secret Meanings of Your Flowers</h4>
+            <div class="secret-meaning-accordion" id="unlocked-flowers-list">
+              <!-- Flowers with meanings -->
+            </div>
+
+            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.75rem;">
+              <a href="decode.html" id="unlocked-decode-btn" class="btn btn-primary btn-sm" style="flex: 1;">
+                Decode Secret Story 📜
+              </a>
+              <a href="create.html" class="btn btn-secondary btn-sm" style="flex: 1;">
+                Send a Flower in Return 🌸
+              </a>
+              <button type="button" class="btn btn-secondary btn-sm" onclick="window.location.reload();">
+                Unlock Another 🔑
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <h3>Tinkerbell</h3>
+        <p>The secret language of flowers. A fairy-inspired digital botanical gifting experience crafted for sentimental hearts.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="flowers.html">Flower Library</a></li>
+          <li><a href="create.html">Bouquet Creator</a></li>
+          <li><a href="unlock.html">Unlock Gift</a></li>
+          <li><a href="decode.html">Floriography Decoder</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Help &amp; Tips</h4>
+        <p style="font-size: 0.85rem; color: #A3B5A7; line-height: 1.6;">
+          Gift codes are case-insensitive and look like "TINK-XXXXXX".
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Cross-Device Note</h4>
+        <p style="font-size: 0.85rem; color: #A3B5A7; line-height: 1.6;">
+          For this frontend-only edition, gift codes are retrieved from this browser's local database.
+        </p>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      &copy; 2026 TINKERBELL — THE SECRET LANGUAGE OF FLOWERS. ALL RIGHTS RESERVED.
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/storage.js"></script>
+  <script src="js/flowers-data.js"></script>
+  <script src="js/unlock.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
+

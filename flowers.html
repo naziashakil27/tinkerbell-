@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flower Library — Tinkerbell</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌸</text></svg>">
+</head>
+<body>
+
+  <!-- Floating Fairy Petals Container -->
+  <div id="petal-canvas-container" aria-hidden="true"></div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-link">
+        <svg class="brand-icon" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="16" fill="#6C8B74" opacity="0.2"/>
+          <path d="M20 6 C24 14 34 16 34 20 C34 24 24 26 20 34 C16 26 6 24 6 20 C6 16 16 14 20 6 Z" fill="#6C8B74"/>
+          <circle cx="20" cy="20" r="4" fill="#C59E3F"/>
+        </svg>
+        <div>
+          <span class="brand-title">Tinkerbell</span>
+          <span class="brand-tagline">The Secret Language of Flowers</span>
+        </div>
+      </a>
+
+      <button class="mobile-toggle" aria-label="Toggle Navigation" aria-expanded="false">
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+      </button>
+
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="flowers.html" class="nav-link active">Flower Library</a></li>
+        <li><a href="create.html" class="nav-link">Create Bouquet</a></li>
+        <li><a href="unlock.html" class="nav-link">Unlock Gift</a></li>
+        <li><a href="decode.html" class="nav-link">Decode Flowers</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="sparkle-toggle-btn" title="Toggle Floating Petals" aria-label="Toggle Floating Petals">
+          ✨
+        </button>
+        <a href="create.html" class="btn btn-primary btn-sm">Craft Bouquet</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header style="padding: 3.5rem 0 2rem; text-align: center;">
+    <div class="container">
+      <div class="eyebrow">The Botanical Archive</div>
+      <h1 style="font-size: 3rem; margin-bottom: 0.75rem;">Master Flower Library</h1>
+      <p style="color: var(--color-botanical-muted); max-width: 620px; margin: 0 auto; font-size: 1.05rem;">
+        Discover the profound language behind every petal. Search Victorian sentiments, inspect historical meanings, or upload your own botanical photographs to enrich your garden.
+      </p>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="container">
+    <!-- Controls Bar -->
+    <div class="library-controls">
+      <div class="search-and-action-bar">
+        <div class="search-input-wrapper">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="flower-search" class="search-input" placeholder="Search by flower name, Latin genus, or secret meaning (e.g., love, peace)..." aria-label="Search flowers">
+        </div>
+
+        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+          <button class="btn btn-primary btn-sm" id="open-upload-btn">
+            + Upload Custom Flower 🌸
+          </button>
+          <button class="btn btn-secondary btn-sm" id="export-backup-btn" title="Export flowers and gifts as JSON">
+            Export Backup 📥
+          </button>
+          <button class="btn btn-secondary btn-sm" id="import-backup-btn" title="Import JSON backup file">
+            Restore Backup 📤
+          </button>
+          <input type="file" id="import-file-input" accept=".json" style="display: none;" />
+        </div>
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border-top: 1px solid var(--color-border); padding-top: 1rem;">
+        <div class="category-pills">
+          <button class="filter-pill active" data-category="All">All Blooms</button>
+          <button class="filter-pill" data-category="Deep Affection">Deep Affection</button>
+          <button class="filter-pill" data-category="Joy">Joy</button>
+          <button class="filter-pill" data-category="Friendship">Friendship</button>
+          <button class="filter-pill" data-category="Elegance">Elegance</button>
+          <button class="filter-pill" data-category="Serenity">Serenity</button>
+          <button class="filter-pill" data-category="New Beginnings">New Beginnings</button>
+          <button class="filter-pill" data-category="Custom">★ Custom Uploads</button>
+        </div>
+
+        <div id="flower-count" style="font-size: 0.88rem; font-weight: 600; color: var(--color-sage);">
+          20 Botanical Specimens
+        </div>
+      </div>
+    </div>
+
+    <!-- Flowers Grid -->
+    <section class="flowers-grid" id="flowers-grid" aria-live="polite">
+      <!-- Dynamically generated by flowers.js -->
+    </section>
+  </main>
+
+  <!-- Flower Detail Modal -->
+  <div class="modal-backdrop" id="flower-detail-modal" role="dialog" aria-modal="true">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 style="font-size: 1.3rem;">Botanical Specimen Record</h3>
+        <button class="modal-close-btn" id="close-detail-btn" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-content-body" id="detail-modal-body">
+        <!-- Injected by flowers.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom Flower Upload Modal -->
+  <div class="modal-backdrop" id="flower-upload-modal" role="dialog" aria-modal="true">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 style="font-size: 1.3rem;">Add a Custom Botanical Wonder</h3>
+        <button class="modal-close-btn" id="close-upload-btn" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-content-body">
+        <form id="custom-flower-form">
+          <div class="form-group">
+            <label class="form-label" for="custom-name">Flower Common Name *</label>
+            <input type="text" id="custom-name" class="form-input" placeholder="e.g., Mountain Bluebell, Desert Lily" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="custom-botanical">Botanical / Latin Name (Optional)</label>
+            <input type="text" id="custom-botanical" class="form-input" placeholder="e.g., Mertensia paniculata">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="custom-category">Sentiment Category</label>
+            <select id="custom-category" class="form-select">
+              <option value="Deep Affection">Deep Affection</option>
+              <option value="Friendship">Friendship</option>
+              <option value="Joy">Joy</option>
+              <option value="Gratitude">Gratitude</option>
+              <option value="Serenity">Serenity</option>
+              <option value="Elegance">Elegance</option>
+              <option value="New Beginnings">New Beginnings</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="custom-meaning">Victorian Floriography Meaning *</label>
+            <input type="text" id="custom-meaning" class="form-input" placeholder="e.g., Constant Humility &amp; Quiet Devotion" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="custom-symbolism">Symbolic Lore &amp; Meaning Description</label>
+            <textarea id="custom-symbolism" class="form-textarea" placeholder="Explain the historical folklore or sentimental meaning behind this bloom..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Flower Photograph (Upload from Computer)</label>
+            <div class="file-dropzone" id="flower-dropzone" role="button" tabindex="0" aria-label="Upload flower photo">
+              <input type="file" id="flower-photo-file" accept="image/*" class="visually-hidden-file-input">
+              <div id="dropzone-empty-state">
+                <div style="font-size: 2.2rem; margin-bottom: 0.5rem;">📷</div>
+                <div style="font-weight: 600; font-size: 1rem; color: var(--color-botanical-dark);">Click to Browse or Drag &amp; Drop Photo Here</div>
+                <div style="font-size: 0.82rem; color: var(--color-botanical-muted); margin-top: 0.35rem;">Supports any image (JPG, PNG, WebP, etc.) — Auto-optimized</div>
+                <button type="button" class="btn btn-secondary btn-sm" id="browse-photo-btn" style="margin-top: 0.75rem;">Select Photo from Computer</button>
+              </div>
+              <div id="dropzone-preview-state" style="display: none; align-items: center; gap: 1rem; text-align: left; padding: 0.5rem;">
+                <div class="image-preview-box" id="photo-preview-box" style="display: block; margin: 0; width: 80px; height: 80px; border-radius: 8px;">
+                  <img id="photo-preview-img" alt="Uploaded Flower Preview" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div style="flex: 1;">
+                  <div style="color: var(--color-sage); font-weight: 700; font-size: 0.9rem; display: flex; align-items: center; gap: 0.3rem;">
+                    <span>✓</span> Photo Selected &amp; Ready
+                  </div>
+                  <div id="photo-file-name" style="font-size: 0.82rem; color: var(--color-botanical-muted); word-break: break-all; margin-top: 0.2rem;"></div>
+                  <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
+                    <button type="button" class="btn btn-secondary btn-sm" id="change-photo-btn" style="padding: 0.25rem 0.6rem; font-size: 0.78rem;">Change Photo</button>
+                    <button type="button" class="btn btn-secondary btn-sm" id="remove-photo-btn" style="padding: 0.25rem 0.6rem; font-size: 0.78rem; color: #C0392B;">Remove</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 1rem; margin-top: 1.5rem; justify-content: flex-end;">
+            <button type="button" class="btn btn-secondary" onclick="document.getElementById('flower-upload-modal').classList.remove('active')">Cancel</button>
+            <button type="submit" class="btn btn-primary">Save to My Garden ✨</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <h3>Tinkerbell</h3>
+        <p>The secret language of flowers. A fairy-inspired digital botanical gifting experience crafted for sentimental hearts.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="flowers.html">Flower Library</a></li>
+          <li><a href="create.html">Bouquet Creator</a></li>
+          <li><a href="unlock.html">Unlock Gift</a></li>
+          <li><a href="decode.html">Floriography Decoder</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Categories</h4>
+        <ul class="footer-links">
+          <li><a href="flowers.html">All 20 Blooms</a></li>
+          <li><a href="create.html">Compose a Gift</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Data Persistence</h4>
+        <p style="font-size: 0.85rem; color: #A3B5A7; line-height: 1.6;">
+          Your custom flower uploads and bouquets are saved persistently to IndexedDB and survive reloads.
+        </p>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      &copy; 2026 TINKERBELL — THE SECRET LANGUAGE OF FLOWERS. ALL RIGHTS RESERVED.
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/storage.js"></script>
+  <script src="js/flowers-data.js"></script>
+  <script src="js/flowers.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
+

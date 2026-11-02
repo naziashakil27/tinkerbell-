@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tinkerbell — The Secret Language of Flowers</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌸</text></svg>">
+</head>
+<body>
+
+  <!-- Floating Fairy Petals Container -->
+  <div id="petal-canvas-container" aria-hidden="true"></div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-link">
+        <svg class="brand-icon" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="16" fill="#6C8B74" opacity="0.2"/>
+          <path d="M20 6 C24 14 34 16 34 20 C34 24 24 26 20 34 C16 26 6 24 6 20 C6 16 16 14 20 6 Z" fill="#6C8B74"/>
+          <circle cx="20" cy="20" r="4" fill="#C59E3F"/>
+        </svg>
+        <div>
+          <span class="brand-title">Tinkerbell</span>
+          <span class="brand-tagline">The Secret Language of Flowers</span>
+        </div>
+      </a>
+
+      <button class="mobile-toggle" aria-label="Toggle Navigation" aria-expanded="false">
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+      </button>
+
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link active">Home</a></li>
+        <li><a href="flowers.html" class="nav-link">Flower Library</a></li>
+        <li><a href="create.html" class="nav-link">Create Bouquet</a></li>
+        <li><a href="unlock.html" class="nav-link">Unlock Gift</a></li>
+        <li><a href="decode.html" class="nav-link">Decode Flowers</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="sparkle-toggle-btn" title="Toggle Floating Petals" aria-label="Toggle Floating Petals">
+          ✨
+        </button>
+        <a href="create.html" class="btn btn-primary btn-sm">Craft Bouquet</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero-section">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="eyebrow">Fairy-Inspired Botanical Gifting</div>
+        <h1>Speak in Blooms. Whisper in Petals.</h1>
+        <p class="hero-subtitle">
+          Welcome to Tinkerbell — an enchanted botanical sanctuary where every flower tells an unspoken story. 
+          Curate a bespoke digital bouquet, tuck in a secret heartfelt message, and gift it through a magical code.
+        </p>
+        <div class="hero-actions">
+          <a href="create.html" class="btn btn-primary btn-lg">Create Your Bouquet 🌸</a>
+          <a href="flowers.html" class="btn btn-secondary btn-lg">Explore Flower Library</a>
+        </div>
+        <div class="hero-stats">
+          <div>
+            <div class="hero-stat-num">20+</div>
+            <div class="hero-stat-label">Botanical Blooms</div>
+          </div>
+          <div>
+            <div class="hero-stat-num">100%</div>
+            <div class="hero-stat-label">Secret Codes</div>
+          </div>
+          <div>
+            <div class="hero-stat-num">Victorian</div>
+            <div class="hero-stat-label">Floriography Meanings</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual-card">
+        <div class="fairy-floating-badge">
+          <span>✨</span> Floriography Encrypted
+        </div>
+        <div class="hero-visual-frame">
+          <svg viewBox="0 0 320 360" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <!-- Stems -->
+            <path d="M160 300 L140 180" stroke="#3D5A3A" stroke-width="4" stroke-linecap="round"/>
+            <path d="M160 300 L180 170" stroke="#3D5A3A" stroke-width="4" stroke-linecap="round"/>
+            <path d="M160 300 L160 150" stroke="#3D5A3A" stroke-width="5" stroke-linecap="round"/>
+            <path d="M160 300 L115 190" stroke="#4B6F44" stroke-width="3" stroke-linecap="round"/>
+            <path d="M160 300 L205 195" stroke="#4B6F44" stroke-width="3" stroke-linecap="round"/>
+            
+            <!-- Foliage Leaves -->
+            <path d="M130 220 Q95 210 100 230 Q120 235 135 228" fill="#587A50"/>
+            <path d="M190 220 Q225 210 220 230 Q200 235 185 228" fill="#587A50"/>
+
+            <!-- Kraft Wrapping Paper Cone -->
+            <polygon points="100,210 220,210 175,320 145,320" fill="#E5C396" stroke="#C59E3F" stroke-width="1.5"/>
+            <polygon points="100,210 160,240 145,320" fill="#D4AF77" opacity="0.6"/>
+
+            <!-- Gold Ribbon & Bow -->
+            <ellipse cx="160" cy="275" rx="10" ry="10" fill="#C59E3F"/>
+            <path d="M160 275 Q135 260 140 280 Q155 285 160 275" fill="#DFBD5E"/>
+            <path d="M160 275 Q185 260 180 280 Q165 285 160 275" fill="#DFBD5E"/>
+
+            <!-- Layered Blooms -->
+            <!-- Peony Left -->
+            <circle cx="120" cy="165" r="28" fill="#F1948A" filter="drop-shadow(0 3px 6px rgba(0,0,0,0.15))"/>
+            <circle cx="120" cy="165" r="18" fill="#FADBD8"/>
+            <circle cx="120" cy="165" r="8" fill="#EC7063"/>
+
+            <!-- Lavender Right -->
+            <g transform="translate(195, 120)">
+              <ellipse cx="0" cy="10" rx="6" ry="16" fill="#9B59B6"/>
+              <ellipse cx="6" cy="18" rx="5" ry="12" fill="#BB8FCE"/>
+              <ellipse cx="-6" cy="18" rx="5" ry="12" fill="#884EA0"/>
+            </g>
+
+            <!-- Center Majestic Red Rose -->
+            <circle cx="160" cy="135" r="34" fill="#C0392B" filter="drop-shadow(0 4px 10px rgba(0,0,0,0.2))"/>
+            <path d="M145 125 C148 115 172 115 175 125 C180 138 170 152 160 156 C150 152 140 138 145 125 Z" fill="#922B21"/>
+            <circle cx="160" cy="135" r="12" fill="#E74C3C"/>
+            <circle cx="160" cy="135" r="5" fill="#FADBD8"/>
+
+            <!-- Baby's Breath Accents -->
+            <circle cx="105" cy="130" r="4" fill="#FFFFFF" stroke="#BDC3C7" stroke-width="0.5"/>
+            <circle cx="130" cy="110" r="3.5" fill="#FFFFFF" stroke="#BDC3C7" stroke-width="0.5"/>
+            <circle cx="185" cy="105" r="4" fill="#FFFFFF" stroke="#BDC3C7" stroke-width="0.5"/>
+            <circle cx="215" cy="150" r="3.5" fill="#FFFFFF" stroke="#BDC3C7" stroke-width="0.5"/>
+          </svg>
+        </div>
+        <div style="margin-top: 1.25rem;">
+          <h4 style="font-size: 1.25rem; margin-bottom: 0.25rem;">The Maiden's Secret</h4>
+          <p style="font-size: 0.85rem; color: var(--color-botanical-muted);">Red Rose, Peony &amp; French Lavender</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- How It Works Section -->
+  <section style="padding: 4rem 0;">
+    <div class="container">
+      <div class="section-header">
+        <div class="eyebrow">Three Simple Steps</div>
+        <h2>How Tinkerbell Works</h2>
+        <p>Gifting flowers in the 19th-century Victorian tradition, reimagined with modern digital enchantment.</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <span class="step-number">01</span>
+          <div class="step-icon-bubble">🌿</div>
+          <h3>Select Your Blooms</h3>
+          <p>Browse our 20+ botanical specimens. Each flower holds a specific Victorian sentiment—from deep devotion to heartfelt gratitude.</p>
+        </div>
+
+        <div class="step-card">
+          <span class="step-number">02</span>
+          <div class="step-icon-bubble">💌</div>
+          <h3>Compose &amp; Wrap</h3>
+          <p>Arrange stems, select silken wrapping paper, and pen your secret note. We encrypt your bouquet into a unique gift code.</p>
+        </div>
+
+        <div class="step-card">
+          <span class="step-number">03</span>
+          <div class="step-icon-bubble">✨</div>
+          <h3>Share &amp; Unlock</h3>
+          <p>Send the secret code (e.g., TINK-A7B92C) to your recipient. They enter it on the website to discover their blooms and decode the hidden message.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Floriography Banner -->
+  <section class="container">
+    <div class="floriography-banner">
+      <div class="eyebrow" style="color: var(--color-gold);">The Victorian Cipher</div>
+      <h2>The Secret Language of Flowers</h2>
+      <p>
+        In 19th-century England, strict social etiquette forbade direct expressions of deep affection. 
+        Lovers turned to <em>floriography</em>—a clandestine floral language where every petal, leaf, and blossom whispered secrets that spoken words dared not utter.
+      </p>
+      <div class="quote-highlight">
+        "Flowers are the silent heralds of the soul; they deliver words that ink and paper never could."
+      </div>
+      <a href="decode.html" class="btn btn-gold btn-sm">Read the Floriography Guide 📜</a>
+    </div>
+  </section>
+
+  <!-- Call to Action Banner -->
+  <section class="container">
+    <div class="cta-banner">
+      <div class="eyebrow">Send A Smile Today</div>
+      <h2>Ready to Send an Enchanted Gift?</h2>
+      <p>Compose your unique botanical arrangement in under two minutes and surprise someone dear.</p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="create.html" class="btn btn-primary btn-lg">Begin Creating Now 🌸</a>
+        <a href="unlock.html" class="btn btn-secondary btn-lg">I Have a Gift Code 🔑</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <h3>Tinkerbell</h3>
+        <p>The secret language of flowers. A fairy-inspired digital botanical gifting experience crafted for sentimental hearts.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="flowers.html">Flower Library</a></li>
+          <li><a href="create.html">Bouquet Creator</a></li>
+          <li><a href="unlock.html">Unlock Gift</a></li>
+          <li><a href="decode.html">Floriography Decoder</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Meanings</h4>
+        <ul class="footer-links">
+          <li><a href="flowers.html?category=Deep Affection">Deep Affection</a></li>
+          <li><a href="flowers.html?category=Gratitude">Heartfelt Gratitude</a></li>
+          <li><a href="flowers.html?category=Friendship">True Friendship</a></li>
+          <li><a href="flowers.html?category=Serenity">Inner Peace</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Project Notes</h4>
+        <p style="font-size: 0.85rem; color: #A3B5A7; line-height: 1.6;">
+          College Mini-Project in Frontend Web Development.<br>
+          Built with HTML5, CSS3, Vanilla JavaScript, and IndexedDB.
+        </p>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      &copy; 2026 TINKERBELL — THE SECRET LANGUAGE OF FLOWERS. ALL RIGHTS RESERVED.
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/storage.js"></script>
+  <script src="js/flowers-data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
+

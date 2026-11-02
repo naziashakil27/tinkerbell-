@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Floriography Decoder — Tinkerbell</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌸</text></svg>">
+</head>
+<body>
+
+  <!-- Floating Fairy Petals Container -->
+  <div id="petal-canvas-container" aria-hidden="true"></div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-link">
+        <svg class="brand-icon" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="16" fill="#6C8B74" opacity="0.2"/>
+          <path d="M20 6 C24 14 34 16 34 20 C34 24 24 26 20 34 C16 26 6 24 6 20 C6 16 16 14 20 6 Z" fill="#6C8B74"/>
+          <circle cx="20" cy="20" r="4" fill="#C59E3F"/>
+        </svg>
+        <div>
+          <span class="brand-title">Tinkerbell</span>
+          <span class="brand-tagline">The Secret Language of Flowers</span>
+        </div>
+      </a>
+
+      <button class="mobile-toggle" aria-label="Toggle Navigation" aria-expanded="false">
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+      </button>
+
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="flowers.html" class="nav-link">Flower Library</a></li>
+        <li><a href="create.html" class="nav-link">Create Bouquet</a></li>
+        <li><a href="unlock.html" class="nav-link">Unlock Gift</a></li>
+        <li><a href="decode.html" class="nav-link active">Decode Flowers</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="sparkle-toggle-btn" title="Toggle Floating Petals" aria-label="Toggle Floating Petals">
+          ✨
+        </button>
+        <a href="create.html" class="btn btn-primary btn-sm">Craft Bouquet</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header style="padding: 3rem 0 1.5rem; text-align: center;">
+    <div class="container">
+      <div class="eyebrow">The Floriography Cipher</div>
+      <h1 style="font-size: 2.8rem; margin-bottom: 0.5rem;">Flower Meaning Decoder</h1>
+      <p style="color: var(--color-botanical-muted); max-width: 620px; margin: 0 auto; font-size: 1rem;">
+        Unravel the hidden poetic messages encrypted within bouquets. Every petal in Victorian lore held a whisper of unspoken sentiment.
+      </p>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Bouquet-Specific Decoder Section (shown if ?code= is present) -->
+    <section id="bouquet-decoder-section" style="margin-bottom: 4rem;">
+      <div style="text-align: center; margin-bottom: 1.5rem;">
+        <h2 id="decoded-bouquet-title" style="font-size: 2rem;">Decoded Bouquet Meaning</h2>
+      </div>
+
+      <div id="decoded-message-summary">
+        <!-- Composite message summary banner injected by decode.js -->
+      </div>
+
+      <div id="decoded-flowers-cards">
+        <!-- Individual flower cards injected by decode.js -->
+      </div>
+    </section>
+
+    <!-- Master Floriography Historical Intro -->
+    <section class="floriography-banner" style="margin-bottom: 3.5rem;">
+      <div class="eyebrow" style="color: var(--color-gold);">Historical Lore</div>
+      <h2>The Secret Code of Victorian Bouquets</h2>
+      <p>
+        In the Victorian era, expressing deep affection openly was considered scandalous. 
+        High-society courtiers developed a sophisticated secret code known as <em>tussie-mussies</em> or <em>talking bouquets</em>. 
+        A red rose pledged enduring passion, baby's breath promised celestial innocence, while a sprig of lavender whispered tranquility and peace.
+      </p>
+      <div class="quote-highlight">
+        "To hand someone a blossom was to hand them the unspoken thoughts of your heart."
+      </div>
+    </section>
+
+    <!-- Interactive Master Floriography Dictionary Search -->
+    <section style="margin-bottom: 5rem;">
+      <div class="section-header">
+        <div class="eyebrow">Botanical Sentiment Lexicon</div>
+        <h2>Master Floriography Dictionary</h2>
+        <p>Search any bloom or sentiment below to decode its historical meaning.</p>
+      </div>
+
+      <div style="max-width: 520px; margin: 0 auto 2.5rem;">
+        <div class="search-input-wrapper">
+          <span class="search-icon">🔍</span>
+          <input 
+            type="text" 
+            id="dict-search-input" 
+            class="search-input" 
+            placeholder="Search by emotion (e.g., love, joy, devotion) or flower name..."
+            aria-label="Search Dictionary"
+          />
+        </div>
+      </div>
+
+      <div id="dict-list-container">
+        <!-- Populated dynamically by decode.js -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <h3>Tinkerbell</h3>
+        <p>The secret language of flowers. A fairy-inspired digital botanical gifting experience crafted for sentimental hearts.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="flowers.html">Flower Library</a></li>
+          <li><a href="create.html">Bouquet Creator</a></li>
+          <li><a href="unlock.html">Unlock Gift</a></li>
+          <li><a href="decode.html">Floriography Decoder</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Did You Know?</h4>
+        <p style="font-size: 0.85rem; color: #A3B5A7; line-height: 1.6;">
+          If a flower was offered with the right hand, the answer was "Yes"; if given with the left hand, it signaled "No".
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Craft a Gift</h4>
+        <p style="font-size: 0.85rem; color: #A3B5A7; line-height: 1.6;">
+          Inspired by a meaning? <a href="create.html" style="color: #FFF; text-decoration: underline;">Craft a bouquet now</a>.
+        </p>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      &copy; 2026 TINKERBELL — THE SECRET LANGUAGE OF FLOWERS. ALL RIGHTS RESERVED.
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/storage.js"></script>
+  <script src="js/flowers-data.js"></script>
+  <script src="js/decode.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
+
